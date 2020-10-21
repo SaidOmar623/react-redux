@@ -1,4 +1,5 @@
 export default {
     FETCH_POST: 'FETCH_POST',
-    ADD_POST: 'ADD_POST'
+    ADD_POST: 'ADD_POST',
+    HANDLE_CHANGE: 'HANDLE_CHANGE'
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
+import { connect } from 'react-redux'
+import { addPost } from '../actions/postActions'
 
 class PostForm extends Component {
     state = { 
@@ -18,17 +20,22 @@ class PostForm extends Component {
 
     handleSubmit = e =>{
         e.preventDefault();
-        const post={...this.state};
+
+        const post = {...this.state};
+        //call Backend With state
         // await axios.post('http://localhost:3001/posts', post)
-        fetch('http://localhost:3001/posts',{
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(post)
-        })
-        .then(res=>res.json())
-        .then(data=>console.log(data));
+        // fetch('http://localhost:3001/posts',{
+        //     method: "POST",
+        //     headers: {
+        //         "content-type": "application/json"
+        //     },
+        //     body: JSON.stringify(post)
+        // })
+        // .then(res=>res.json())
+        // .then(data=>console.log(data));
+
+        //Call Action With Redux
+        this.props.addPost(post)
     }
 
     render() { 
@@ -64,4 +71,4 @@ class PostForm extends Component {
     }
 }
  
-export default PostForm;
+export default connect(null, { addPost })(PostForm);
